@@ -43,6 +43,15 @@ export class UsersController {
     }
   }
 
+  @Get('search/:name')
+  async findByName(@Param('name') name: string) {
+    const user = await this.usersService.findByName(name);
+    if (!user) {
+      throw new NotFoundException(`User with name "${name}" not found`);
+    }
+    return user;
+  }
+
   @Patch(':id')
   @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
   update(

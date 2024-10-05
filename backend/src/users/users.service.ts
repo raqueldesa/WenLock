@@ -31,7 +31,14 @@ export class UsersService {
     if (!user) throw new Error('Usuário não encontrado');
     return user;
   }
-
+  async findByName(name: string): Promise<User[]> {
+    const user = this.usersRepository.find({
+      where: {
+        name,
+      },
+    });
+    return user || null; // Return null if user not found
+  }
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     await this.usersRepository.update(id, updateUserDto);
     return this.findOne(id);
