@@ -1,7 +1,24 @@
-// src/users/dto/create-user.dto.ts
+import {
+  IsNotEmpty,
+  IsEmail,
+  IsAlpha,
+  Length,
+  IsNumberString,
+} from 'class-validator';
+
 export class CreateUserDto {
-    readonly name: string;
-    readonly email: string;
-    readonly password: string;
-  }
-  
+  @IsNotEmpty({ message: 'Nome é obrigatório' })
+  name: string;
+
+  @IsNotEmpty({ message: 'Email é obrigatório' })
+  @IsEmail({}, { message: 'Email deve ser válido' })
+  email: string;
+
+  @IsNotEmpty({ message: 'Matrícula é obrigatória' })
+  @IsNumberString({}, { message: 'Matrícula deve conter apenas números' })
+  registration: string;
+
+  @IsNotEmpty({ message: 'Senha é obrigatória' })
+  @Length(6, 6, { message: 'Senha deve ter exatamente 6 caracteres' })
+  password: string;
+}

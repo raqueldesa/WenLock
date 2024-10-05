@@ -8,7 +8,7 @@ import { User } from './users/entities/user.entity';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // Torna o módulo global
-      envFilePath: '.env', // Define o caminho do .env
+      envFilePath: './.env', // Define o caminho do .env
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
