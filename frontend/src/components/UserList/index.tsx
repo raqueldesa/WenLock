@@ -15,9 +15,10 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import ModeOutlinedIcon from "@mui/icons-material/ModeOutlined";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+import lupa from "../../assets/lupa.svg";
+import { toast } from "react-toastify";
 
-export default function UserList() {
-  const [users, setUsers] = useState([]);
+export default function UserList({ users, setUsers, searchTerm }) {
   const [selectedUser, setSelectedUser] = useState(null); // Usuário selecionado para visualização
   const [selectedIdUser, setSelectedIdUser] = useState(null); // Usuário selecionado para visualização
   const [open, setOpen] = useState(false); // Controla o estado do modal
@@ -31,6 +32,7 @@ export default function UserList() {
 
   const handleViewClick = (user) => {
     setSelectedUser(user); // Define o usuário selecionado
+    console.log(user);
     setOpen(true); // Abre o modal
   };
   const handleDeleteClick = (id: number) => {
@@ -53,6 +55,7 @@ export default function UserList() {
           prevUsers.filter((user) => user.id !== selectedIdUser)
         );
         console.log("Usuário deletado");
+        toast.success("Exclusão Realizada!");
       })
       .catch((error) => {
         console.log(error);
@@ -60,19 +63,7 @@ export default function UserList() {
     setOpenDelete(false);
   };
 
-  useEffect(() => {
-    // Fetch data from API using Axios
-    axios
-      .get(baseURL)
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: Date) => {
     const date = new Date(dateString);
 
     // Pega o dia, mês e ano
@@ -107,10 +98,25 @@ export default function UserList() {
         ))
       ) : (
         <Box className="flex empty">
-          <Typography variant="h6">Nenhum Usuário Registrado</Typography>
-          <Typography variant="body1">
-            Clique em “Cadastrar Usuário” para começar a cadastrar.
-          </Typography>
+          {searchTerm ? (
+            <Box className={"flex img"}>
+              <img src={lupa} alt="welcome image" width={150} />
+              <Typography variant="h6">Nenhum Resultado Encontrado</Typography>
+              <Typography variant="body1">
+                Não foi possível achar nenhum resultado para sua busca.
+              </Typography>{" "}
+              <Typography variant="body1">
+                Tente refazer a pesquisa para encontrar o que busca.
+              </Typography>
+            </Box>
+          ) : (
+            <Box>
+              <Typography variant="h6">Nenhum Usuário Registrado</Typography>
+              <Typography variant="body1">
+                Clique em “Cadastrar Usuário” para começar a cadastrar.
+              </Typography>
+            </Box>
+          )}
         </Box>
       )}
 
@@ -131,15 +137,15 @@ export default function UserList() {
               </Typography>
               <Typography>
                 <strong>Data de criação:</strong>{" "}
-                {formatDate(selectedUser.createdDate)}
+                {formatDate(selectedUser.createdAt)}
               </Typography>
               <Typography>
                 <strong>Última edição:</strong>
 
-                {formatDate(selectedUser.createdDate) ==
-                formatDate(selectedUser.updatedDate)
+                {formatDate(selectedUser.createdAt) ===
+                formatDate(selectedUser.updatedAt)
                   ? "Nenhuma"
-                  : selectedUser.updatedDate}
+                  : selectedUser.updatedAt}
               </Typography>
             </Box>
           )}

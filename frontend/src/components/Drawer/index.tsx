@@ -19,6 +19,7 @@ import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined
 import { useNavigate } from "react-router-dom";
 import wenlock from "../../assets/wenlock_logo.svg";
 import wenlock2 from "../../assets/wenlock_logo2.svg";
+import { ToastContainer } from "react-toastify";
 
 const drawerWidth = 240;
 
@@ -129,6 +130,8 @@ export default function MiniDrawer({ children }: any) {
 
   return (
     <Box sx={{ width: "70vw", marginLeft: "5vw" }}>
+      <ToastContainer theme="colored" />
+
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
