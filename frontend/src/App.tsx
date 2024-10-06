@@ -1,9 +1,10 @@
 // App.tsx
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import MiniDrawer from "./components/Drawer";
 import Home from "./Pages/Home";
 import Users from "./Pages/Users";
+import UserUpdate from "./Pages/UserUpdate";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       <MiniDrawer>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/usuarios" element={<Users />} />
-          <Route path="/cadastro-usuarios" element={<div>cadaaaaaa</div>} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/register-user" element={<UserUpdate />} />
+          <Route path="/update-user/:id" element={<UserUpdate />} />
         </Routes>
       </MiniDrawer>
     </Router>

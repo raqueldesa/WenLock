@@ -1,15 +1,15 @@
-import {
-  Box,
-  Button,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import "./index.css";
 import { Search } from "@mui/icons-material";
 import UserList from "../../components/UserList";
+import { useNavigate } from "react-router-dom";
 
 export default function Users() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/register-user");
+  };
+
   return (
     <Box component={"main"} className="main_home">
       <Typography variant="h3">Usuários</Typography>
@@ -26,7 +26,11 @@ export default function Users() {
               },
             }}
           />
-          <Button variant="contained" className="btn_cadastrar">
+          <Button
+            variant="contained"
+            className="btn_cadastrar"
+            onClick={handleClick}
+          >
             + Cadastrar Usuário
           </Button>
         </Box>
@@ -34,9 +38,7 @@ export default function Users() {
           <Typography>Nome</Typography>
           <Typography>Ações</Typography>
         </Box>
-        <Box className="flex list">
-          <UserList />
-        </Box>
+        <UserList />
       </Box>
     </Box>
   );

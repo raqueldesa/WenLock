@@ -184,7 +184,7 @@ export default function MiniDrawer({ children }: any) {
                       },
                 ]}
               >
-                <Link to={"/usuarios"}>usuarios</Link>
+                <Link to={"/users"}>usuarios</Link>
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText
