@@ -14,7 +14,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { Link } from "react-router-dom";
-
+import DonutSmallOutlinedIcon from "@mui/icons-material/DonutSmallOutlined";
+import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
+import { useNavigate } from "react-router-dom";
 import wenlock from "../../assets/wenlock_logo.svg";
 import wenlock2 from "../../assets/wenlock_logo2.svg";
 
@@ -123,6 +125,7 @@ export default function MiniDrawer({ children }: any) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ width: "70vw", marginLeft: "5vw" }}>
@@ -153,7 +156,12 @@ export default function MiniDrawer({ children }: any) {
           </IconButton>
         </DrawerHeader>
         <List>
-          <ListItem key={"text"} disablePadding sx={{ display: "block" }}>
+          <ListItem
+            key={"text2"}
+            disablePadding
+            sx={{ display: "block", color: "#fff" }}
+            onClick={() => navigate("/")}
+          >
             <ListItemButton
               sx={[
                 {
@@ -174,7 +182,9 @@ export default function MiniDrawer({ children }: any) {
                   {
                     minWidth: 0,
                     justifyContent: "center",
+                    color: "#fff",
                   },
+
                   open
                     ? {
                         mr: 3,
@@ -184,11 +194,10 @@ export default function MiniDrawer({ children }: any) {
                       },
                 ]}
               >
-                <Link to={"/users"}>usuarios</Link>
-                <InboxIcon />
+                <DonutSmallOutlinedIcon onClick={() => navigate("/")} />
               </ListItemIcon>
               <ListItemText
-                primary={"aaaa"}
+                primary={"Home"}
                 sx={[
                   open
                     ? {
@@ -201,7 +210,12 @@ export default function MiniDrawer({ children }: any) {
               />
             </ListItemButton>
           </ListItem>
-          <ListItem key={"text2"} disablePadding sx={{ display: "block" }}>
+          <ListItem
+            key={"text"}
+            disablePadding
+            sx={{ display: "block", color: "#fff" }}
+            onClick={() => navigate("/users")}
+          >
             <ListItemButton
               sx={[
                 {
@@ -222,7 +236,9 @@ export default function MiniDrawer({ children }: any) {
                   {
                     minWidth: 0,
                     justifyContent: "center",
+                    color: "#fff",
                   },
+
                   open
                     ? {
                         mr: 3,
@@ -232,11 +248,10 @@ export default function MiniDrawer({ children }: any) {
                       },
                 ]}
               >
-                <Link to={"/"}>Home</Link>
-                <InboxIcon />
+                <AssignmentIndOutlinedIcon onClick={() => navigate("/users")} />
               </ListItemIcon>
               <ListItemText
-                primary={"aaaa"}
+                primary={"Usuários"}
                 sx={[
                   open
                     ? {
