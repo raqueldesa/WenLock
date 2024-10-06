@@ -85,7 +85,7 @@ export default function UserList() {
 
   return (
     <Box className="flex list">
-      {users ? (
+      {users.length > 0 ? (
         users.map((user) => (
           <Box key={user.id} className={"flex user"}>
             <Typography>{user.name}</Typography>
@@ -106,7 +106,12 @@ export default function UserList() {
           </Box>
         ))
       ) : (
-        <>aaa</>
+        <Box className="flex empty">
+          <Typography variant="h6">Nenhum Usuário Registrado</Typography>
+          <Typography variant="body1">
+            Clique em “Cadastrar Usuário” para começar a cadastrar.
+          </Typography>
+        </Box>
       )}
 
       {/* Modal para visualização do usuário */}

@@ -25,3 +25,10 @@
     color: #0d1931;
   }
 }
+
+.empty {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}

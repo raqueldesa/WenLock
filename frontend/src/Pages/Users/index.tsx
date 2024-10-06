@@ -19,6 +19,7 @@ export default function Users() {
             id="outlined-basic"
             variant="outlined"
             placeholder="Pesquisa"
+            size="small"
             sx={{ width: "25ch" }}
             slotProps={{
               input: {
@@ -30,6 +31,9 @@ export default function Users() {
             variant="contained"
             className="btn_cadastrar"
             onClick={handleClick}
+            sx={{
+              backgroundColor: "#0290A4",
+            }}
           >
             + Cadastrar Usuário
           </Button>

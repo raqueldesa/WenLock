@@ -15,12 +15,12 @@
 .search {
   flex-direction: row;
   justify-content: space-between;
+  height: fit-content;
 }
 
 .box_ {
   width: 100%;
   height: 90%;
-  border: 1px solid #272846;
   gap: 7px;
   /* background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 4px #00000029; */
@@ -29,7 +29,7 @@
 }
 
 .btn_cadastrar {
-  width: fit-content;
+  background-color: #0d1931;
 }
 
 .titles {
@@ -39,7 +39,6 @@
 
 .btn_welcome {
   box-shadow: 0px 3px 6px #00000029;
-  border: 1px solid #272846;
   border-radius: 9px;
   opacity: 1;
   width: 35%;
